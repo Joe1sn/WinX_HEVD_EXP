@@ -1,9 +1,9 @@
 #include "include/common/gadget.hpp"
 
-namespace exp
+namespace exploit
 {
     namespace gadget
     {
     } // namespace gadget
 
-} // namespace exp
+} // namespace exploit

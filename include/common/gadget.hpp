@@ -1,9 +1,9 @@
 #pragma once
 
-namespace exp
+namespace exploit
 {
     namespace gadget
     {
     } // namespace gadget
 
-} // namespace exp
+} // namespace exploit

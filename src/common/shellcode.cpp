@@ -1,10 +1,10 @@
 #include "include/common/shellcode.hpp"
 
-namespace exp
+namespace exploit
 {
     namespace shellcode
     {
 
     } // namespace shellcode
 
-} // namespace exp
+} // namespace exploit

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace exp
+namespace exploit
 {
     namespace shellcode
     {
@@ -23,4 +23,4 @@ namespace exp
         };
     } // namespace shellcode
 
-} // namespace exp
+} // namespace exploit
