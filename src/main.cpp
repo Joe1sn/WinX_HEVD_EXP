@@ -13,6 +13,7 @@ void menu() {
     cout << "1.  [0x222003]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK      ******\n";
     cout << "2.  [0x222007]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK_GS   ******\n";
     cout << "100. [HELP]   ****** GET KERNEL BASE                       ******\n";
+    cout << "101. [HELP]   ****** SHOW STACK INFOS                      ******\n";
     cout << "input io ctl> ";
 }
 
@@ -46,6 +47,12 @@ int main()
     }
     case 0x100: {
         printf("kernel base is: %p\n", exploit::memtools::ulGetKernelBase((PCHAR)"ntoskrnl.exe"));
+        break;
+    }
+    case 0x101: {
+        exploit::memtools::ulGetStackLimit(L"HEVD_EXP.exe");
+        // exploit::memtools::ulGetStackLimit(L"HEVD");
+
         break;
     }
     default:
