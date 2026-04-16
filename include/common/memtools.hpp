@@ -9,11 +9,11 @@ typedef enum _SYSTEM_INFORMATION_CLASS {
 } SYSTEM_INFORMATION_CLASS;
 
 typedef NTSTATUS(WINAPI* PNtQuerySystemInformation)(
-    SYSTEM_INFORMATION_CLASS SystemInformationClass,
-    PVOID SystemInformation,
-    ULONG SystemInformationLength,
-    PULONG ReturnLength
-);
+	SYSTEM_INFORMATION_CLASS SystemInformationClass,
+	PVOID SystemInformation,
+	ULONG SystemInformationLength,
+	PULONG ReturnLength
+	);
 
 typedef struct SYSTEM_MODULE {
 	ULONG                Reserved1;
@@ -29,20 +29,21 @@ typedef struct SYSTEM_MODULE {
 	WORD                 w018;
 	WORD                 NameOffset;
 	CHAR                 Name[MAXIMUM_FILENAME_LENGTH];
-}SYSTEM_MODULE, *PSYSTEM_MODULE;
+}SYSTEM_MODULE, * PSYSTEM_MODULE;
 
 typedef struct _SYSTEM_MODULE_INFORMATION {
-    ULONG ModulesCount;
-    SYSTEM_MODULE Modules[1];
-} SYSTEM_MODULE_INFORMATION, *PSYSTEM_MODULE_INFORMATION;
+	ULONG ModulesCount;
+	SYSTEM_MODULE Modules[1];
+} SYSTEM_MODULE_INFORMATION, * PSYSTEM_MODULE_INFORMATION;
 
 
 
 namespace exploit
 {
-    namespace memtools
-    {
-        unsigned long long ulGetKernelBase(PCHAR ModuleName);
-    } // namespace memtools
+	namespace memtools
+	{
+		unsigned long long ulGetKernelBase(PCHAR ModuleName);
+		unsigned long long ulGetStackLimit(LPWSTR ModuleName);
+	} // namespace memtools
 
 } // namespace exploit

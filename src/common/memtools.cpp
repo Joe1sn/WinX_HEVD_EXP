@@ -46,6 +46,10 @@ namespace exploit
             }
             return 0;
         }
+
+        unsigned long long ulGetStackLimit(LPWSTR ModuleName) {
+            return 0;
+        }
     } // namespace memtools
 
 } // namespace exploit
