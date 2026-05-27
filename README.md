@@ -32,7 +32,13 @@ Detail writeup is in chinese:
 
 4. [【Win Pwn】HEVD-任意地址写](https://joe1sn.eu.org/2024/02/23/win-hevd-exp-arbitrary-write/)
 
-   Using function hollowing as Arbitrary Write exploit.
+   [CVE-2023-21768 复现](https://joe1sn.eu.org/2024/02/23/win-hevd-exp-arbitrary-write/)
+
+   ~~Using function hollowing as Arbitrary Write exploit.~~
+
+   Using `NtQuerySystemInfomation` to leak EPROCESS address and system token address,  using vulnerable to read token value and write to current process to EoP. This is learned from reproduction of CVE-2023-21768.
+
+   enhanced solution is at: 
 
 5. [【Win Pwn】HEVD-内核栈溢出GS保护及绕过](https://joe1sn.eu.org/2024/02/24/win-hevd-exp-stackoverflow-GS/)
 
@@ -40,4 +46,8 @@ Detail writeup is in chinese:
 
 6. [【Win Pwn】Windows10 内核池溢出](https://joe1sn.eu.org/2025/04/16/win-exp-big-non-paged-pool-overflow/)
 
-   Windows kernel Non-page pool overflow, need to rewrite.
+   Windows kernel Non-page pool overflow, Segment type.
+
+   [【Win Pwn】Windows10 内核VS池溢出利用](https://joe1sn.eu.org/2026/05/01/winX-vs-pool-overflow/)
+
+   Windows kernel Non-page pool overflow, VS type.
