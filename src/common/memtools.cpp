@@ -143,6 +143,69 @@ namespace exploit
             free(stackinfo);
             return baseaddr;
         }
+
+        bool bFindHandleObject(DWORD targetPid, ULONG_PTR targetHandle, ULONG_PTR result) {
+            HMODULE ntdll = GetModuleHandle(TEXT("ntdll"));
+            PNtQuerySystemInformation NtQuerySystemInformation = (PNtQuerySystemInformation)GetProcAddress(ntdll, "NtQuerySystemInformation");
+            if (!NtQuerySystemInformation)
+            {
+                std::cout << "[-] Failed to get NtQuerySystemInformation\n";
+                return false;
+            }
+
+            ULONG bufferSize = 0x10000;
+            std::vector<BYTE> buffer(bufferSize);
+
+            NTSTATUS status;
+            ULONG returnLength = 0;
+
+            while (true)
+            {
+                status = NtQuerySystemInformation(
+                    (SYSTEM_INFORMATION_CLASS)SystemExtendedHandleInformation,
+                    buffer.data(),
+                    bufferSize,
+                    &returnLength
+                );
+
+                if (status == STATUS_INFO_LENGTH_MISMATCH)
+                {
+                    bufferSize *= 2;
+                    buffer.resize(bufferSize);
+                    continue;
+                }
+
+                break;
+            }
+
+            if (!NT_SUCCESS(status))
+            {
+                std::cout << "[-] NtQuerySystemInformation failed: "
+                    << std::hex << status << std::endl;
+                return false;
+            }
+
+            auto handleInfo =
+                (PSYSTEM_HANDLE_INFORMATION_EX)buffer.data();
+
+            for (ULONG_PTR i = 0; i < handleInfo->NumberOfHandles; i++)
+            {
+                auto& entry = handleInfo->Handles[i];
+
+                if ((DWORD)entry.UniqueProcessId != targetPid)
+                    continue;
+
+                if (entry.HandleValue != targetHandle)
+                    continue;
+                *reinterpret_cast<DWORD64*>(result) = reinterpret_cast<DWORD64>(entry.Object);
+                return true;
+            }
+
+            std::cout << "[-] Handle not found\n";
+            return false;
+        }
+
+
     } // namespace memtools
 
 } // namespace exploit

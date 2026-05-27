@@ -7,17 +7,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(PROJECT_INCLUDE
     include/exp/stackoverflow.hpp
     include/exp/exploit.hpp
+    include/exp/arbitraryWrite.hpp
 
     include/common/shellcode.hpp
     include/common/memtools.hpp
     include/common/gadget.hpp
-
 )
 set(PROJECT_SOURCE
     src/main.cpp
 
     src/exp/stackoverflow.cpp
     src/exp/exploit.cpp
+    src/exp/arbitraryWrite.cpp
 
     src/common/shellcode.cpp
     src/common/memtools.cpp

