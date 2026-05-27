@@ -1,6 +1,6 @@
 # HEVD WinX Exploit 
 
-![image-20260416153616179](D:\Github\WinX_HEVD_EXP\assets\image-20260416153616179.png)
+![image-20260416153616179](.\assets\image-20260416153616179.png)
 
 HEVD Exploit on Windows 10 2022.19045.2006
 
