@@ -8,6 +8,7 @@ set(PROJECT_INCLUDE
     include/exp/stackoverflow.hpp
     include/exp/exploit.hpp
     include/exp/arbitraryWrite.hpp
+    include/exp/uaf.hpp
 
     include/common/shellcode.hpp
     include/common/memtools.hpp
@@ -19,6 +20,7 @@ set(PROJECT_SOURCE
     src/exp/stackoverflow.cpp
     src/exp/exploit.cpp
     src/exp/arbitraryWrite.cpp
+    src/exp/uaf.cpp
 
     src/common/shellcode.cpp
     src/common/memtools.cpp

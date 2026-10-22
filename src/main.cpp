@@ -1,7 +1,14 @@
+/*
+ * @Date: 2026-04-16 09:14:18
+ * @LastEditors: joe1sn joe1sn23333@gmail.com
+ * @LastEditTime: 2026-10-21 19:24:21
+ * @FilePath: \WinX_HEVD_EXP\src\main.cpp
+ */
 #include <iostream>
 #include <windows.h>
 #include "include/exp/stackoverflow.hpp"
 #include "include/exp/arbitraryWrite.hpp"
+#include "include/exp/uaf.hpp"
 #include "include/common/memtools.hpp"
 using std::cout;
 
@@ -14,6 +21,7 @@ void menu() {
     cout << "1.  [0x222003]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK      ******\n";
     cout << "2.  [0x222007]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK_GS   ******\n";
     cout << "3.  [0x22200B]****** HEVD_IOCTL_ARBITRARY_WRITE            ******\n";
+    cout << "4.  [UAF]*********** UAF_OBJECT_NON_PAGED_POOL             ******\n";
     cout << "100. [HELP]   ****** GET KERNEL BASE                       ******\n";
     cout << "101. [HELP]   ****** SHOW STACK INFOS                      ******\n";
     cout << "102. [HELP]   ****** Get EPROCESS Addr From Kernel         ******\n";
@@ -32,6 +40,7 @@ int main()
     unsigned int io_ctl = 0;
     menu();
     scanf_s("%x", &io_ctl);
+    std::cin.ignore();
     // printf("%x, %x", io_ctl, io2num(io_ctl));
 
     switch (io_ctl)
@@ -44,14 +53,20 @@ int main()
     }
     case 2: {
         cout << "Now Excuting ...\n";
-        cout << "2.   [0x222007]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK ****** ...\n";
+        cout << "2.  [0x222007]****** HEVD_IOCTL_BUFFER_OVERFLOW_STACK ******\n";
         exploit::stackoverflow::StackOverflowGS(hDevice, 0x222007);
         break;
     }
     case 3: {
         cout << "Now Excuting ...\n";
-        cout << "2.   [0x22200B]****** HEVD_IOCTL_ARBITRARY_WRITE ****** ...\n";
+        cout << "3.  [0x22200B]****** HEVD_IOCTL_ARBITRARY_WRITE ******\n";
         exploit::arbitrary::write(hDevice, 0x22200B);
+        break;
+    }
+    case 4: {
+        cout << "Now Excuting ...\n";
+        cout << "4.  [UAF]*********** UAF_OBJECT_NON_PAGED_POOL ******\n\n";
+        exploit::uaf::Exploit(hDevice);
         break;
     }
     case 0x100: {
