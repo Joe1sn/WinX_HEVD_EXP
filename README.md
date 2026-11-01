@@ -51,3 +51,7 @@ Detail writeup is in chinese:
    [【Win Pwn】Windows10 内核VS池溢出利用](https://joe1sn.eu.org/2026/05/01/winX-vs-pool-overflow/)
 
    Windows kernel Non-page pool overflow, VS type.
+
+7. [【Win Pwn】windows 内核UAF利用](https://joe1sn.eu.org/2026/11/01/hevd-uaf/)
+
+   Windows kernel Non-page pool Use after Free
